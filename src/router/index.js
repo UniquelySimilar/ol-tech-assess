@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Measurement from '../components/Measurement.vue'
+import Navbar from '../components/Navbar.vue'
 
 Vue.use(VueRouter)
 
@@ -12,12 +13,18 @@ const routes = [
   {
     path: '/measurement',
     name: 'measurement',
-    component: Measurement
+    components: {
+      default: Measurement,
+      navbar: Navbar
+    }
   },
   {
     path: '/admin',
     name: 'admin',
-    component: () => import('../components/Admin.vue')
+    components: {
+      default: () => import('../components/Admin.vue'),
+      navbar: Navbar
+    }
   }
 ]
 
