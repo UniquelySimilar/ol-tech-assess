@@ -9,6 +9,7 @@
           <th>Value</th>
           <th>UOM</th>
           <th>Enabled</th>
+          <th>&nbsp;</th>
         </tr>
       </thead>
       <tbody>
@@ -19,6 +20,9 @@
           <td>
             <!-- NOTE: Using v-model here was causing a delay between handler being called and data actually updated -->
             <input type="checkbox" id="checkbox" :checked="measurement.enabled" @click="updateRcdEnabled(index, $event)">
+          </td>
+          <td>
+            <router-link class="btn btn-secondary btn-sm" :to="{ name: 'detail', params: {id: measurement.id} }">Detail</router-link>
           </td>
         </tr>
       </tbody>

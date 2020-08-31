@@ -25,6 +25,12 @@ const routes = [
       default: () => import('../components/Admin.vue'),
       navbar: Navbar
     }
+  },
+  {
+    path: '/detail/:id',
+    name: 'detail',
+    component: () => import('../components/Detail.vue'),
+    props: true
   }
 ]
 
