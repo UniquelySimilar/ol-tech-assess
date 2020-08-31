@@ -8,13 +8,18 @@
           <th>ID</th>
           <th>Value</th>
           <th>UOM</th>
+          <th>Enabled</th>
         </tr>
       </thead>
       <tbody>
-        <tr v-for="measurement in measurements" v-bind:key="measurement.id">
+        <tr v-for="(measurement, index) in measurements" v-bind:key="measurement.id">
           <td>{{ measurement.id }}</td>
           <td>{{ measurement.value }}</td>
           <td>{{ measurement.uom }}</td>
+          <td>
+            <!-- NOTE: Using v-model here was causing a delay between handler being called and data actually updated -->
+            <input type="checkbox" id="checkbox" :checked="measurement.enabled" @click="updateRcdEnabled(index, $event)">
+          </td>
         </tr>
       </tbody>
     </table>
@@ -50,8 +55,6 @@
           this.UOMcurrent = 'ft2';
           this.UOMconversion = 10.764;
         }
-        console.log(this.UOMcurrent)
-        console.log(this.UOMconversion)
         for (const measurement of this.measurements) {
           measurement.value = measurement.value * this.UOMconversion;
           if (this.UOMcurrent == 'ft2') {
@@ -59,6 +62,16 @@
           }
           measurement.uom = this.UOMcurrent;
         }
+      },
+      updateRcdEnabled(index, event) {
+        if (event.target.checked) {
+          this.measurements[index].enabled = true;
+        }
+        else {
+          this.measurements[index].enabled = false;
+        }
+        //console.log('id: ' + this.measurements[index].id + ', enabled:' + this.measurements[index].enabled)
+        // Call API to update 'measurement.enabled' on server
       }
     },
     created() {
