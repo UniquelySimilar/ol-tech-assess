@@ -1,17 +1,12 @@
 <template>
   <div id="app" class="container">
-    <measurement />
+    <router-view />
   </div>
 </template>
 
 <script>
-  import Measurement from './components/Measurement.vue'
-
   export default {
-    name: 'App',
-    components: {
-      Measurement
-    }
+    name: 'App'
   }
 </script>
 

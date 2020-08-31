@@ -18,6 +18,7 @@
         </tr>
       </tbody>
     </table>
+    <router-link class="btn btn-secondary btn-sm" :to="{ name: 'admin' }">Admin</router-link>
   </div>
 </template>
 
