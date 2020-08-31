@@ -1,6 +1,6 @@
 <template>
   <div class="admin">
-    <h2>Hello from Admin.vue</h2>
+    <h3>Admin</h3>
     <router-link class="btn btn-secondary btn-sm" :to="{ name: 'measurement' }">Back</router-link>
   </div>
 </template>
