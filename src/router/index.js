@@ -29,8 +29,13 @@ const routes = [
   {
     path: '/detail/:id',
     name: 'detail',
-    component: () => import('../components/Detail.vue'),
-    props: true
+    components: {
+      default: () => import('../components/Detail.vue'),
+      navbar: Navbar
+    },
+    props: {
+      default: true
+    }
   }
 ]
 
